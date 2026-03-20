@@ -1,0 +1,53 @@
+@model RestaurantBook.Models.Reserva
+@{
+    ViewData["Title"] = "Detalle de Reserva";
+}
+
+<div class="page-header">
+    <h1>Reserva #@Model.Id</h1>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">← Volver</a>
+    </div>
+</div>
+
+<div class="detail-card">
+    <div class="detail-grid">
+        <div class="detail-item">
+            <span class="detail-label">Cliente</span>
+            <span class="detail-value">@Model.Cliente?.Nombre</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Email</span>
+            <span class="detail-value">@Model.Cliente?.Email</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Mesa</span>
+            <span class="detail-value">Mesa @Model.Mesa?.Numero (@Model.Mesa?.Ubicacion)</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Capacidad</span>
+            <span class="detail-value">@Model.Mesa?.Capacidad personas</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Fecha y Hora</span>
+            <span class="detail-value">@Model.FechaHora.ToString("dddd, dd MMMM yyyy - HH:mm")</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Número de Personas</span>
+            <span class="detail-value">@Model.NumeroPersonas</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Estado</span>
+            <span class="detail-value"><span class="badge badge-@Model.Estado.ToLower()">@Model.Estado</span></span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Notas</span>
+            <span class="detail-value">@(Model.Notas ?? "Sin notas")</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Creada el</span>
+            <span class="detail-value">@Model.FechaCreacion.ToString("dd/MM/yyyy HH:mm")</span>
+        </div>
+    </div>
+</div>

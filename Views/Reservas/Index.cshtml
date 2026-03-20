@@ -1,0 +1,41 @@
+@model IEnumerable<RestaurantBook.Models.Reserva>
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<div class="page-header">
+    <h1>Reservas</h1>
+    <a asp-action="Create" class="btn btn-primary">+ Nueva Reserva</a>
+</div>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Mesa</th>
+                <th>Fecha y Hora</th>
+                <th>Personas</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@r.Cliente?.Nombre</td>
+                    <td>Mesa @r.Mesa?.Numero</td>
+                    <td>@r.FechaHora.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@r.NumeroPersonas pax</td>
+                    <td><span class="badge badge-@r.Estado.ToLower()">@r.Estado</span></td>
+                    <td class="actions">
+                        <a asp-action="Details" asp-route-id="@r.Id" class="btn-sm">Ver</a>
+                        <a asp-action="Edit" asp-route-id="@r.Id" class="btn-sm btn-warning">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@r.Id" class="btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

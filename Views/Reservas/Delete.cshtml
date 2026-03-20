@@ -1,0 +1,37 @@
+@model RestaurantBook.Models.Reserva
+@{
+    ViewData["Title"] = "Eliminar Reserva";
+}
+
+<div class="page-header">
+    <h1>Eliminar Reserva</h1>
+</div>
+
+<div class="confirm-card">
+    <p class="confirm-message">¿Está seguro que desea eliminar la siguiente reserva?</p>
+    <div class="detail-grid">
+        <div class="detail-item">
+            <span class="detail-label">Cliente</span>
+            <span class="detail-value">@Model.Cliente?.Nombre</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Mesa</span>
+            <span class="detail-value">Mesa @Model.Mesa?.Numero</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Fecha</span>
+            <span class="detail-value">@Model.FechaHora.ToString("dd/MM/yyyy HH:mm")</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Estado</span>
+            <span class="detail-value">@Model.Estado</span>
+        </div>
+    </div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
