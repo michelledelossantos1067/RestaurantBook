@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="hero">
+    <h1>Bienvenido a RestaurantBook</h1>
+    <p>Sistema de gestión de reservas para restaurantes</p>
+    <a asp-controller="Reservas" asp-action="Create" class="btn btn-primary">Nueva Reserva</a>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.TotalReservas</div>
+        <div class="stat-label">Total Reservas</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.ReservasHoy</div>
+        <div class="stat-label">Reservas Hoy</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.MesasDisponibles</div>
+        <div class="stat-label">Mesas Disponibles</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">@ViewBag.TotalClientes</div>
+        <div class="stat-label">Clientes Registrados</div>
+    </div>
+</div>
+
+<div class="quick-actions">
+    <h2>Acciones Rápidas</h2>
+    <div class="action-grid">
+        <a asp-controller="Reservas" asp-action="Create" class="action-card">
+            <span class="action-icon">📅</span>
+            <span>Nueva Reserva</span>
+        </a>
+        <a asp-controller="Clientes" asp-action="Create" class="action-card">
+            <span class="action-icon">👤</span>
+            <span>Nuevo Cliente</span>
+        </a>
+        <a asp-controller="Mesas" asp-action="Index" class="action-card">
+            <span class="action-icon">🪑</span>
+            <span>Ver Mesas</span>
+        </a>
+        <a asp-controller="Admin" asp-action="Index" class="action-card">
+            <span class="action-icon">📊</span>
+            <span>Panel Admin</span>
+        </a>
+    </div>
+</div>
